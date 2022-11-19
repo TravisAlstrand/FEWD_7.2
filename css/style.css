@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  background-color: rgb(96, 122, 202);
+  color: white;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.bell-icon {
+  width: 40px;
+  fill: white;
+}
+
+.user-img {
+  width: 50px;
+  border-radius: 50%;
+}
