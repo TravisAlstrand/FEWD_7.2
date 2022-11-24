@@ -8,6 +8,8 @@
 
   --clr-blue: rgb(117, 119, 196);
   --clr-dark-blue: rgb(65, 66, 109);
+  --clr-light-gray: rgb(217, 217, 217);
+  --clr-border-gray: rgb(94, 94, 94);
   --clr-white: rgb(255, 255, 255);
   --clr-green: rgb(123, 241, 123);
 
@@ -48,7 +50,7 @@ nav {
   padding: .75rem;
 }
 
-/* BASE STYLES */
+/* === HEADER === */
 
 header {
   justify-content: space-between;
@@ -63,7 +65,7 @@ strong {
 
 .bell-icon {
   width: 25px;
-  margin-right: .5rem;
+  margin-right: .75rem;
   fill: var(--clr-white);
 }
 
@@ -79,6 +81,8 @@ strong {
 .header-right p {
   font-size: .75rem;
 }
+
+/* === NAV === */
 
 nav {
   display: flex;
@@ -97,4 +101,26 @@ nav {
 .nav-svg:hover {
   cursor: pointer;
   fill: var(--clr-green);
+}
+
+/* === DASHBOARD HEADER === */
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+}
+
+.headline {
+  width: 30%;
+  text-align: center;
+}
+
+.tab {
+  width: 70%;
+  height: 100%;
+  background-color: var(--clr-light-gray);
+  border-bottom-left-radius: 5px;
+  border-left: 1px solid var(--clr-border-gray);
+  border-bottom: 1px solid var(--clr-border-gray);
 }
