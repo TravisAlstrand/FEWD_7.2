@@ -7,6 +7,7 @@
   font-family: 'Source Sans Pro', sans-serif;
 
   --clr-blue: rgb(117, 119, 196);
+  --clr-dark-blue: rgb(65, 66, 109);
   --clr-white: rgb(255, 255, 255);
   --clr-green: rgb(123, 241, 123);
 
@@ -42,12 +43,16 @@ strong {
   fill: var(--clr-green);
 }
 
+header,
+nav {
+  padding: .75rem;
+}
+
 /* BASE STYLES */
 
 header {
   justify-content: space-between;
   width: 100vw;
-  padding: .75rem;
   background-color: var(--clr-blue);
   color: var(--clr-white);
 }
@@ -73,4 +78,23 @@ strong {
 
 .header-right p {
   font-size: .75rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: .5rem;
+  background-color: var(--clr-dark-blue);
+}
+
+.nav-svg {
+  fill: var(--clr-white);
+  width: 30px;
+  transition: fill var(--transition);
+}
+
+.nav-svg:hover {
+  cursor: pointer;
+  fill: var(--clr-green);
 }
