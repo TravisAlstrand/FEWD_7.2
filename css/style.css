@@ -137,7 +137,9 @@ nav {
 
 /* === CHARTS === */
 
-.traffic {
+.traffic,
+.daily,
+.mobile {
   padding-inline: 1rem;
 }
 
@@ -150,6 +152,7 @@ h3 {
 .traffic-nav {
   display: flex;
   justify-content: space-around;
+  margin-bottom: .5rem;
   list-style: none;
 }
 
@@ -168,4 +171,10 @@ h3 {
   background-color: var(--clr-green);
   color: white;
   text-shadow: 1px 1px 2px black;
+}
+
+canvas {
+  width: 100%;
+  margin-block: .5rem;
+  background-color: black;
 }
