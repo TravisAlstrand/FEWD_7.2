@@ -5,6 +5,7 @@
   font-size: 1rem;
   font-weight: 400;
   font-family: 'Source Sans Pro', sans-serif;
+  scroll-behavior: smooth;
 
   --clr-blue: rgb(117, 119, 196);
   --clr-dark-blue: rgb(65, 66, 109);
