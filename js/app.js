@@ -14,6 +14,107 @@ trafficUl.addEventListener('click', e => {
 })
 
 
+/* =============== MESSAGE USER ================= */
+
+const msgSection = document.querySelector('.message');
+const searchBar = document.querySelector('#userField');
+const users = document.querySelectorAll('.member-text p');
+const resultsDiv = document.querySelector('#resultsDiv')
+const resultsUL = document.querySelector('#resultsUL');
+const errorMsgs = document.querySelectorAll('.error-msg');
+const messageField = document.querySelector('#messageField');
+const sendBtn = document.querySelector('#send');
+
+const matchUsers = (input) => {
+  let matchedUsers = [];
+  if (input !== '') {
+    users.forEach(user => {
+      const name = user.innerHTML.toLowerCase();
+      if (name.includes(input)) {
+        matchedUsers.push(user.innerHTML);
+      }
+    })
+  }
+  appendUsers(matchedUsers);
+};
+
+const appendUsers = (users) => {
+  resultsUL.innerHTML = '';
+  if (users.length) {
+    resultsDiv.classList.remove('no-display');
+  } else {
+    resultsDiv.classList.add('no-display');
+  }
+
+  users.forEach(user => {
+    resultsUL.innerHTML += `<li>${user}</li>`;
+  });
+  
+  const userLIs = document.querySelectorAll('#resultsUL li');
+  userLIs.forEach(li => {
+    li.addEventListener('click', () => {
+      searchBar.value = li.innerHTML;
+      resultsDiv.classList.add('no-display');
+    })
+  })
+};
+
+// APPEND MSG SENT NOTIFICATION
+const createMsgSentDiv = (userName) => {
+  msgSection.insertAdjacentHTML('afterbegin', `
+    <div class="sent-div">
+      <span>X</span>
+      <p>Message sent to ${userName} successfully!</p>
+    </div>
+  `);
+
+  const closeBtn = document.querySelector('.sent-div span');
+
+  closeBtn.addEventListener('click', () => {
+    msgSection.firstElementChild.remove()
+  })
+}
+
+// LISTEN FOR TYPING
+searchBar.addEventListener('input', () => {
+  matchUsers(searchBar.value);
+});
+
+// CLOSE IF CLICKED WAY
+document.addEventListener('click', e => {
+  if (!e.target.closest('#resultsDiv')) {
+    resultsDiv.classList.add('no-display');
+  }
+})
+
+// TRY TO SEND
+sendBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  let hasName;
+  let hasMsg;
+
+  if (!searchBar.value.length) {
+    errorMsgs[0].classList.remove('no-display');
+  } else {
+    errorMsgs[0].classList.add('no-display');
+    hasName = true;
+  }
+
+  if (!messageField.value.length) {
+    errorMsgs[1].classList.remove('no-display');
+  } else {
+    errorMsgs[1].classList.add('no-display');
+    hasMsg = true;
+  }
+
+  if (hasName && hasMsg) {
+    createMsgSentDiv(searchBar.value);
+    searchBar.value = '';
+    messageField.value = '';
+  }
+});
+
+
 /* ============= TOGGLE SWITCHES ================ */
 
 const onTexts = document.querySelectorAll('.on-text');

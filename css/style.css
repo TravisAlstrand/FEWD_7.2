@@ -195,6 +195,11 @@ nav {
   padding-inline: 1rem;
 }
 
+.traffic-nav-link:hover,
+.active {
+  text-shadow: 1px 1px 2px black;
+}
+
 .traffic-nav {
   display: flex;
   justify-content: space-around;
@@ -206,17 +211,22 @@ nav {
   cursor: pointer;
   padding: .5rem;
   border-radius: 10px;
-  transition: color var(--transition);
+  transition: color var(--transition), text-shadow var(--transition), 
+              background-color var(--transition);
 }
 
 .traffic-nav-link:hover {
   color: var(--clr-green);
 }
 
+.traffic-nav-link.active:hover {
+  color: var(--clr-blue);
+  text-shadow: none;
+}
+
 .active {
   background-color: var(--clr-green);
   color: white;
-  text-shadow: 1px 1px 2px black;
 }
 
 canvas {
@@ -237,6 +247,7 @@ canvas {
 }
 
 .social-card {
+  justify-content: space-around;
   align-items: center;
   margin-top: 1rem;
   padding: 1rem;
@@ -249,7 +260,6 @@ canvas {
   justify-content: center;
   width: 50px;
   height: 50px;
-  margin-right: 2rem;
   border-radius: 50%;
   background-color: var(--clr-blue);
 }
@@ -317,11 +327,21 @@ canvas {
 }
 
 .user-search,
-.message-field {
+.message-field,
+#resultsUL {
   padding-inline: 1rem;
   border-radius: 5px;
   border: 2px solid var(--clr-dark-gray);
+}
+
+.user-search,
+.message-field {
   background-color: var(--clr-light-gray);
+}
+
+.message, 
+#resultsDiv {
+  position: relative;
 }
 
 .message {
@@ -339,9 +359,41 @@ canvas {
   height: 2.5rem;
 }
 
+#resultsUL {
+  position: absolute;
+  width: 100%;
+  top: -1rem;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  background-color: white;
+}
+
+#resultsUL li {
+  height: 1.5rem;
+  margin-bottom: .5rem;
+  list-style: none;
+  cursor: pointer;
+  transition: font-size var(--transition);
+}
+
+#resultsUL li:hover,
+#resultsUL li:focus {
+  font-size: 1.15rem;
+}
+
+#resultsUL li:last-of-type {
+  margin-bottom: 0;
+}
+
 .message-field {
   padding-block: 1rem;
   height: 6rem;
+}
+
+.error-msg {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: red;
 }
 
 .send-btn {
@@ -356,6 +408,41 @@ canvas {
 .send-btn:hover {
   background-color: var(--clr-blue-hover);
   color: black;
+}
+
+.sent-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding-inline: 1rem;
+  background-color: rgba(0, 0, 0, .85);
+  color: var(--clr-white);
+}
+
+.sent-div span {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-weight: 700;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.sent-div span:hover {
+  color: var(--clr-green);
+}
+
+.sent-div p {
+  width: 100%;
+  font-size: 2rem;
+  text-align: center;
 }
 
 /* === SETTINGS == */
@@ -481,4 +568,25 @@ canvas {
 
 .cancel-btn:hover {
   background-color: var(--clr-dark-gray-hover);
+}
+
+/* === FOOTER === */
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  background-color: var(--clr-blue);
+}
+
+.back-to-top {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--clr-white);
+  transition: color var(--transition);
+}
+
+.back-to-top:hover {
+  color: var(--clr-green);
 }
