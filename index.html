@@ -192,16 +192,23 @@
       <div class="toggle-section">
         <div class="toggle-div">
           <label for="emailNotifs">Send Email Notifications</label>
+          <span class="on-text">ON</span>
+          <span class="off-text">OFF</span>
           <input type="checkbox" name="email-notifs" id="emailNotifs" class="toggle">
         </div>
         <div class="toggle-div">
           <label for="publicProf">Set Profile to Public</label>
+          <span class="on-text">ON</span>
+          <span class="off-text">OFF</span>
           <input type="checkbox" name="public-prof" id="publicProf" class="toggle">
         </div>
       </div>
       <select class="timezone-select" id="timezone">
         <option disabled selected>Select a Timezone</option>
-        <option>Eastern</option>
+        <option value="eastern">Eastern</option>
+        <option value="central">Central</option>
+        <option value="mountain">Mountain</option>
+        <option value="pacific">Pacific</option>
       </select>
       <div class="settings-buttons-div" >
         <button class="save-btn" id="save">Save</button>
