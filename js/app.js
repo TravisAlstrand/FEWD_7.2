@@ -1,3 +1,31 @@
+const notifDot = document.querySelector('#notification-dot');
+let hasNotifs = 3;
+
+
+
+/* ================ ALERT POP UP ================= */
+const alertBar = document.querySelector('.alert');
+const alertTextSpan = document.querySelector('#alertText');
+
+const updateAlertBar = (num) => {
+  notifDot.classList.remove('no-display');
+  alertBar.classList.remove('no-display');
+  alertText.innerHTML += `<div>You have <span class="num-of-notifs">${num}</span> new notifications!</div><span class="close-alert-bar">X</span>`;
+}
+
+if (hasNotifs) {
+  updateAlertBar(hasNotifs.toString());
+} else {
+  notifDot.classList.add('no-display');
+  alertBar.classList.add('no-display');
+}
+
+alertBar.addEventListener('click', (e) => {
+  if (e.target.classList.contains('close-alert-bar')) {
+    alertBar.style.display = 'none';
+  }
+});
+
 
 /* ============ TRAFFIC CHART NAV =============== */
 
@@ -146,6 +174,7 @@ publicToggle.addEventListener('click', () => {
 const timezoneSelect = document.querySelector('#timezone');
 const saveBtn = document.querySelector('#save');
 const clearBtn = document.querySelector('#cancel');
+const settingSaveNotif = document.querySelector('#saveSettingsNotif');
 
 const setToLS = (key, value) => {
   window.localStorage.setItem(key, value);
@@ -183,6 +212,9 @@ saveBtn.addEventListener('click', () => {
   } else {
     removeFromLS('Timezone');
   }
+
+  settingsNotif(true);
+
 });
 
 // CLEAR LS
@@ -193,6 +225,7 @@ clearBtn.addEventListener('click', () => {
   publicToggle.checked = false;
   checkToggles(publicToggle, 1);
   timezoneSelect.firstElementChild.selected = true;
+  settingsNotif(false);
 });
 
 // GATHER LS ON PAGE LOAD
@@ -214,6 +247,22 @@ if (profileLS === 'True') {
 
 if (timeLS) {
   timezoneSelect.value = timeLS;
+}
+
+const settingsNotif = (bool) => {
+  if (bool) {
+    settingSaveNotif.classList.remove('cleared');
+    settingSaveNotif.classList.add('saved');
+    settingSaveNotif.innerText = 'Settings Saved';
+  } else {
+    settingSaveNotif.classList.remove('saved');
+    settingSaveNotif.classList.add('cleared');
+    settingSaveNotif.innerText = 'Settings Cleared';
+  }
+};
+
+if (emailLS || profileLS || timeLS) {
+  settingsNotif(true);
 }
 
 // INITIALIZE TOGGLE SWITCH TEXT

@@ -178,13 +178,39 @@ nav {
   border-bottom: 1px solid var(--clr-dark-gray);
 }
 
-/* === ALERT === */
+/* === ALERT BAR === */
+
 .alert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 90%;
   height: 3rem;
   margin: 1rem auto 1rem auto;
+  padding-inline: 1rem;
   background-color: var(--clr-blue);
   border-radius: 10px;
+  color: var(--clr-white);
+}
+
+#alertText {
+  display: flex;
+  justify-content: space-between;
+}
+
+.num-of-notifs {
+  font-weight: 700;
+  color: var(--clr-green);
+}
+
+.close-alert-bar {
+  font-weight: 700;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.close-alert-bar:hover {
+  color: var(--clr-green);
 }
 
 /* === CHARTS === */
@@ -568,6 +594,22 @@ canvas {
 
 .cancel-btn:hover {
   background-color: var(--clr-dark-gray-hover);
+}
+
+.saved {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.25rem;
+  color: var(--clr-green);
+  text-shadow: 1px 1px 2px black;
+}
+
+.cleared {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.25rem;
+  color: red;
+  text-shadow: 1px 1px 2px black;
 }
 
 /* === FOOTER === */
