@@ -1,7 +1,43 @@
+/* ================ NOTIF DROP DOWN ================= */
+const bellIcon = document.querySelector('.bell-icon');
 const notifDot = document.querySelector('#notification-dot');
+const notifDropDown = document.querySelector('.notif-dropdown');
+const notifCloseBtn = notifDropDown.firstElementChild;
+const notifUL = document.querySelector('.notif-dropdown ul');
 let hasNotifs = 3;
 
+const createNotifs = (name, msg, index) => {
+  let markup = `<div class="notif-container">
+                  <li>${name} has commented: <p class="msg">'${msg}</p></li>
+                  <button class="mark-read">Mark As Read</button>
+                </div>`;
+  notifUL.insertAdjacentHTML('beforeend', markup);
+};
 
+// OPEN NOTIF DROPDOWN
+bellIcon.addEventListener('click', () => {
+  notifDropDown.classList.toggle('no-display');
+})
+
+notifDropDown.addEventListener('click', (e) => {
+  if (e.target === notifCloseBtn) {
+    notifDropDown.classList.add('no-display');
+  } else if (e.target.classList.contains('mark-read')) {
+    const parent = e.target.parentElement;
+    notifUL.removeChild(parent);
+    hasNotifs--;
+    updateAlertBar(hasNotifs);
+  }
+  if (hasNotifs === 0) {
+    notifDot.classList.add('no-display');
+    notifDropDown.insertAdjacentHTML('beforeend', '<p class="all-read">All Notifications Read</p>');
+    alertBar.classList.add('no-display');
+  }
+})
+
+createNotifs('Dan Oliver', 'Seriously dude, my food was labeled with my name, was it you again??', 0)
+createNotifs('Dale Byrd', 'I left my sandwich in the fridge, WHERE IS IT?!', 1)
+createNotifs('Dawn Wood', "That's it, I'm going to HR.", 2)
 
 /* ================ ALERT POP UP ================= */
 const alertBar = document.querySelector('.alert');
@@ -10,6 +46,7 @@ const alertTextSpan = document.querySelector('#alertText');
 const updateAlertBar = (num) => {
   notifDot.classList.remove('no-display');
   alertBar.classList.remove('no-display');
+  alertText.innerHTML = '';
   alertText.innerHTML += `<div>You have <span class="num-of-notifs">${num}</span> new notifications!</div><span class="close-alert-bar">X</span>`;
 }
 

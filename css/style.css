@@ -62,10 +62,6 @@ h3 {
   letter-spacing: .05rem;
 }
 
-.no-display {
-  display: none;
-}
-
 /* === GRID === */
 
 body {
@@ -108,6 +104,7 @@ header,
 }
 
 header {
+  position: relative;
   justify-content: space-between;
   width: 100%;
   background-color: var(--clr-blue);
@@ -132,6 +129,63 @@ header {
 
 .header-right p {
   font-size: .75rem;
+}
+
+/* === NOTIF DROPDOWN === */
+
+.notif-dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  top: 100%;
+  left: 0;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, .85);
+  color: var(--clr-white);
+}
+
+.notif-close {
+  align-self: flex-end;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.notif-close:hover {
+  color: var(--clr-green);
+}
+
+.notif-dropdown ul {
+  width: 100%;
+  list-style: none;
+}
+
+.notif-container,
+.all-read {
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--clr-white);
+  text-align: center;
+}
+
+.msg {
+  color: var(--clr-green);
+}
+
+.mark-read {
+  margin-top: 1rem;
+  padding: .25rem;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--clr-blue);
+  color: var(--clr-white);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.mark-read:hover {
+  background-color: var(--clr-blue-hover);
+  color: black;
 }
 
 /* === NAV === */
@@ -631,4 +685,8 @@ footer {
 
 .back-to-top:hover {
   color: var(--clr-green);
+}
+
+.no-display {
+  display: none;
 }
