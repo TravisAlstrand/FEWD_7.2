@@ -146,7 +146,7 @@ searchBar.addEventListener('input', () => {
 });
 
 // CLOSE IF CLICKED WAY
-document.addEventListener('click', e => {
+document.addEventListener('click', (e) => {
   if (!e.target.closest('#resultsDiv')) {
     resultsDiv.classList.add('no-display');
   }
