@@ -1,3 +1,4 @@
+
 /* ================ NOTIF DROP DOWN ================= */
 const bellIcon = document.querySelector('.bell-icon');
 const notifDot = document.querySelector('#notification-dot');
@@ -41,7 +42,7 @@ createNotifs('Dawn Wood', "That's it, I'm going to HR.", 2)
 
 /* ================ ALERT POP UP ================= */
 const alertBar = document.querySelector('.alert');
-const alertTextSpan = document.querySelector('#alertText');
+const alertText = document.querySelector('#alertText');
 
 const updateAlertBar = (num) => {
   notifDot.classList.remove('no-display');
@@ -75,8 +76,136 @@ trafficUl.addEventListener('click', e => {
       li.classList.remove('active');
     })
     e.target.classList.add('active');
+    randomizeTrafficChart()
   }
 })
+
+
+/* ============ TRAFFIC CHART =============== */
+
+const trafficCanvas = document.querySelector('#traffic-chart');
+
+const getRandomData = (num) => {
+  let dataArray = [];
+  for (let i = 0; i < num; i++) {
+    randomNum = Math.floor(Math.random() * 2500);
+    dataArray.push(randomNum);
+  }
+  return dataArray;
+}
+
+let trafficData = {
+  labels: ['16-22', '23-29', '30-5', '6-12', '13-19', '20-26', '27-3', '4-10', '11-17', '18-24', '25-31'],
+  datasets: [{
+    data: getRandomData(11),
+    backgroundColor: 'rgba(117, 119, 196, .75)',
+    borderWidth: 1,
+    cubicInterpolationMode: 'monotone',
+    pointHoverBackgroundColor: 'rgb(123, 241, 123)',
+    pointHoverRadius: 9
+  }]
+};
+
+const trafficOptions = {
+  fill: true,
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      beginAtZero: true
+    }
+  },
+  plugins: {
+    legend: {
+      display: false
+    }
+  }
+};
+
+let trafficChart = new Chart(trafficCanvas, {
+  type: 'line',
+  data: trafficData,
+  options: trafficOptions
+});
+
+const randomizeTrafficChart = () => {
+  trafficChart.data.datasets[0].data = getRandomData(11);
+  trafficChart.update();
+};
+
+
+/* =============== DAILY CHART ================== */
+
+const dailyCanvas = document.querySelector('#daily-chart');
+
+const dailyData = {
+  labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  datasets: [{
+    data: [75, 115, 175, 125, 225, 200, 100],
+    backgroundColor: 'rgb(117, 119, 196)',
+    borderWidth: 1,
+    cubicInterpolationMode: 'monotone'
+  }]
+};
+
+const dailyOptions = {
+  fill: true,
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      beginAtZero: true
+    }
+  },
+  plugins: {
+    legend: {
+      display: false
+    }
+  }
+};
+
+const dailyChart = new Chart(dailyCanvas, {
+  type: 'bar',
+  data: dailyData,
+  options: dailyOptions
+});
+
+
+/* =============== DAILY CHART ================== */
+
+const mobileCanvas = document.querySelector('#mobile-chart');
+
+const mobileData = {
+  labels: ['Desktop', 'Tablet', 'Phones'],
+  datasets: [{
+    data: [2000, 550, 500],
+    backgroundColor: [
+      'rgb(117, 119, 196)',
+      'rgb(123, 241, 123)',
+      'rgb(123, 237, 241)'
+    ],
+    borderWidth: 1,
+    cubicInterpolationMode: 'monotone'
+  }]
+};
+
+const mobileOptions = {
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position: 'right',
+      labels: {
+        boxWidth: 20,
+        fontStyle: 'bold'
+      }
+    }
+  }
+};
+
+const mobileChart = new Chart(mobileCanvas, {
+  type: 'doughnut',
+  data: mobileData,
+  options: mobileOptions
+});
+
 
 
 /* =============== MESSAGE USER ================= */

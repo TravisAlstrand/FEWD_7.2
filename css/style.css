@@ -239,6 +239,7 @@ header {
   flex-direction: column;
   justify-content: center;
   width: 90%;
+  max-width: 822px;
   height: 3rem;
   margin: 1rem auto 1rem auto;
   padding-inline: 1rem;
@@ -272,6 +273,7 @@ header {
 .traffic,
 .daily,
 .mobile {
+  width: 100%;
   padding-inline: 1rem;
 }
 
@@ -309,10 +311,14 @@ header {
   color: white;
 }
 
+.canvas-div {
+  position: relative;
+  height: 20vh;
+  width: 100%;
+}
+
 canvas {
   width: 100%;
-  margin-block: .5rem;
-  background-color: black;
 }
 
 /* === SOCIALS === */
